@@ -33,7 +33,7 @@
                         <template #item="monitor">
                             <div class="item">
                                 <div class="row">
-                                    <div class="col-9 col-md-8 small-padding">
+                                    <div class="col-9 col-md-4 small-padding">
                                         <div class="info">
                                             <font-awesome-icon v-if="editMode" icon="arrows-alt-v" class="action drag me-3" />
                                             <font-awesome-icon v-if="editMode" icon="times" class="action remove me-3" @click="removeMonitor(group.index, monitor.index)" />
@@ -70,8 +70,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div :key="$root.userHeartbeatBar" class="col-3 col-md-4">
-                                        <HeartbeatBar size="mid" :monitor-id="monitor.element.id" />
+                                    <div :key="$root.userHeartbeatBar" class="col-3 col-md-8">
+                                        <!-- <HeartbeatBar size="mid" :monitor-id="monitor.element.id" /> -->
+                                        <PingChart :monitor-id="monitor.element.id" />
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +90,7 @@ import MonitorSettingDialog from "./MonitorSettingDialog.vue";
 import Draggable from "vuedraggable";
 import HeartbeatBar from "./HeartbeatBar.vue";
 import Uptime from "./Uptime.vue";
+import PingChart from "../components/PingChartLittle.vue";
 import Tag from "./Tag.vue";
 
 export default {
@@ -97,6 +99,7 @@ export default {
         Draggable,
         HeartbeatBar,
         Uptime,
+        PingChart,
         Tag,
     },
     props: {
